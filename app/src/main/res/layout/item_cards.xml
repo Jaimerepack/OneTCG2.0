@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/ivCard"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        tools:background="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/tvSerie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        android:text="ID: "
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivCard"/>
+    <TextView
+        android:id="@+id/tvCardSerie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        tools:text="Serie"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvSerie"/>
+    <TextView
+        android:id="@+id/tvRarity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        android:text="Rarity: "
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCardSerie"/>
+    <TextView
+        android:id="@+id/tvCardRarity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        tools:text="Rarity"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvRarity"/>
+    <TextView
+        android:id="@+id/tvDesignation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        android:text="Designation: "
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCardRarity"/>
+    <TextView
+        android:id="@+id/tvCardDesignation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        tools:text="Designation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDesignation"/>
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        android:text="Name: "
+        app:layout_constraintTop_toBottomOf="@+id/tvSerie"
+        app:layout_constraintStart_toEndOf="@+id/ivCard"/>
+    <TextView
+        android:id="@+id/tvCardName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        tools:text="Name"
+        app:layout_constraintTop_toBottomOf="@+id/tvSerie"
+        app:layout_constraintStart_toEndOf="@+id/tvName"/>
+    <TextView
+        android:id="@+id/tvPower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        android:text="Power: "
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        app:layout_constraintStart_toEndOf="@+id/ivCard"/>
+    <TextView
+        android:id="@+id/tvCardPower"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        tools:text="Power"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        app:layout_constraintStart_toEndOf="@+id/tvPower"/>
+
+    <TextView
+        android:id="@+id/tvCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        android:text="Counter: "
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        app:layout_constraintStart_toEndOf="@+id/tvCardPower"/>
+    <TextView
+        android:id="@+id/tvCardCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        tools:text="Counter"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        app:layout_constraintStart_toEndOf="@+id/tvCounter"/>
+    <TextView
+        android:id="@+id/tvSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        android:text="Card Set: "
+        app:layout_constraintTop_toBottomOf="@+id/tvPower"
+        app:layout_constraintStart_toEndOf="@+id/ivCard"/>
+
+    <TextView
+        android:id="@+id/tvCardSet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/white"
+        android:background="@color/black_transparent"
+        tools:text="Card Set"
+        app:layout_constraintTop_toBottomOf="@+id/tvCardPower"
+        app:layout_constraintStart_toEndOf="@+id/tvSet"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
