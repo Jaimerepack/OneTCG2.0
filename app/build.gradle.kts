@@ -1,8 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
-    id("org.jetbrains.dokka") version "1.9.20"
-
+    alias(libs.plugins.kotlin.android)
+    // Otros plugins específicos para este módulo si los necesitas
 }
 
 android {
@@ -41,7 +40,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
@@ -49,9 +47,9 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
-    implementation(libs.activity)
+    implementation("androidx.activity:activity-ktx:1.8.0") // Ajusta la versión si es necesario
     implementation(libs.core.ktx)
     testImplementation(libs.junit)
-    androidTestImplementation(libs.ext.junit)
+    androidTestImplementation("androidx.test.ext:junit:1.1.5") // Ajusta la versión si es necesario
     androidTestImplementation(libs.espresso.core)
 }
