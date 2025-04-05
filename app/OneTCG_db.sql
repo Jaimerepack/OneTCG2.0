@@ -1,7 +1,7 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
 CREATE TABLE android_metadata (locale TEXT);
-INSERT INTO android_metadata VALUES('en_US');
+INSERT INTO android_metadata VALUES('es_ES');
 CREATE TABLE Cartas (card_id TEXT PRIMARY KEY, rarity TEXT, designation TEXT, name TEXT, life TEXT, attribute TEXT, power TEXT, counter TEXT, color TEXT,type TEXT, effect TEXT, _trigger TEXT, card_set TEXT, notes TEXT);
 INSERT INTO Cartas VALUES('ST01-001','L','LEADER','Monkey.D.Luffy','5','Strike','5000','-','Red','Supernovas/Straw Hat Crew','[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters up to 1 rested DON!! card.','-','Straw Hat Crew-[ST-01]','Errata Card');
 INSERT INTO Cartas VALUES('ST01-002','C','CHARACTER','Usopp','2','Ranged','2000','1000','Red','Straw Hat Crew','[DON!! x2] [When Attacking] Your opponent cannot activate a [Blocker] Character that has 5000 or more power during this battle.','[Trigger] Play this card.','Straw Hat Crew-[ST-01]','-');
@@ -107,12 +107,11 @@ INSERT INTO Cartas VALUES('ST06-016','C','EVENT','White Out','1','-','-','-','Bl
 INSERT INTO Cartas VALUES('ST06-017','C','STAGE','Navy HQ','1','-','-','-','Black','Navy','[On Play] Give up to 1 of your opponent&apos;s Characters −1 cost during this turn.[Activate: Main] You may rest this Stage: If your Leader has the {Navy} type, give up to 1 of your opponent&apos;s Characters −1 cost during this turn.','-','Absolute Justice- [ST-06]','-');
 CREATE TABLE Usuario (id_usuario INTEGER PRIMARY KEY, nombre TEXT, correo TEXT, contraseña TEXT);
 INSERT INTO Usuario VALUES(1,'richard123','ricky201325@gmail.com','ricky201325@gmail.com');
-INSERT INTO Usuario VALUES(2,'richard','kuromechiv@gmail.com','ricky201325@gmail.com');
-INSERT INTO Usuario VALUES(3,'richarddd','matias@gmail.com','matias@gmail.com');
+INSERT INTO Usuario VALUES(2,'skarlett','skarlett@gmail.com','skarlett@gmail.com');
 CREATE TABLE Mazo (id_mazo INTEGER PRIMARY KEY, nombre_mazo TEXT);
 CREATE TABLE Coleccion (id_coleccion INTEGER PRIMARY KEY, nombre_coleccion TEXT);
 CREATE TABLE Cartas_obtenidas (id_carta_obtenida TEXT PRIMARY KEY, cantidad INTEGER);
-INSERT INTO Cartas_obtenidas VALUES('ST01-010',1);
+INSERT INTO Cartas_obtenidas VALUES('ST06-015',1);
 CREATE TABLE Edicion (id_edicion TEXT PRIMARY KEY, nombre_edicion TEXT, año_lanzamiento TEXT);
 INSERT INTO Edicion VALUES('ST-01','Straw Hat Crew-[ST-01]','2023-08-18');
 INSERT INTO Edicion VALUES('ST-02','Worst Generation-[ST-02]','2023-08-19');

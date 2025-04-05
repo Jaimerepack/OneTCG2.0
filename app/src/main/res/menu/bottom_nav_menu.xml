@@ -16,4 +16,9 @@
         android:icon="@drawable/ussop"
         android:title="@string/title_notifications" />
 
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:title="@string/title_profile" />
+
 </menu>

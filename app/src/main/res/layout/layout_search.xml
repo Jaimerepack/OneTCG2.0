@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:hint="Buscar por código o nombre"
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="#757575"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:maxLines="1" />
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Buscar"
+        android:textColor="#FFEB3B"
+        android:backgroundTint="#152A98" />
+</LinearLayout>

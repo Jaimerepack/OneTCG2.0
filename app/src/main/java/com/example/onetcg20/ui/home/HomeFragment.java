@@ -2,10 +2,16 @@ package com.example.onetcg20.ui.home;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -17,6 +23,7 @@ import com.example.onetcg20.CardsProvide;
 import com.example.onetcg20.R;
 import com.example.onetcg20.Utilitys;
 import com.example.onetcg20.adapterRecycler.CardsAdapter;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +42,15 @@ public class HomeFragment extends Fragment{
      * Declaracion del array list de las cartas.
      */
     private List<Cards> cardList;
+    /**
+     * Lista completa de cartas original
+     */
+    private List<Cards> fullCardList;
+    /**
+     * Componentes de búsqueda
+     */
+    private EditText etSearch;
+    private Button btnSearch;
 
     /**
      * Clase que crea la vista del fragmento en general.
@@ -52,7 +68,17 @@ public class HomeFragment extends Fragment{
          */
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = view.findViewById(R.id.recyclerCards);
+
+        // Inicializar los componentes de búsqueda
+        etSearch = view.findViewById(R.id.etSearch);
+        btnSearch = view.findViewById(R.id.btnSearch);
+
+        // Cargar todas las cartas al inicio
+        fullCardList = CardsProvide.getCardsList(getActivity());
+        cardList = new ArrayList<>(fullCardList);
+
         initializeCardList(getActivity());
+
         /**
          * referenciamos los botones para cambiar la vista le recycler
          */
@@ -76,12 +102,84 @@ public class HomeFragment extends Fragment{
             public void onClick(View v) {
                 Utilitys.display=Utilitys.list;
                 initializeCardList(getActivity());
-
             }
         });
+
+        // Configurar eventos de búsqueda
+        setupSearchEvents();
+
         return view;
     }
 
+    /**
+     * Configurar eventos de búsqueda
+     */
+    private void setupSearchEvents() {
+        // Botón de búsqueda
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String searchQuery = etSearch.getText().toString().trim();
+                filterCards(searchQuery);
+            }
+        });
+
+        // Evento al presionar "Buscar" en el teclado
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    String searchQuery = etSearch.getText().toString().trim();
+                    filterCards(searchQuery);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+        // Si el campo queda vacío, mostrar todas las cartas
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().isEmpty()) {
+                    cardList = new ArrayList<>(fullCardList);
+                    initializeCardList(getActivity());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    /**
+     * Filtrar cartas por código o nombre
+     */
+    private void filterCards(String query) {
+        if (query.isEmpty()) {
+            cardList = new ArrayList<>(fullCardList);
+            initializeCardList(getActivity());
+            return;
+        }
+
+        List<Cards> filteredList = new ArrayList<>();
+        for (Cards card : fullCardList) {
+            if (card.getSerie().toLowerCase().contains(query.toLowerCase()) ||
+                    card.getNombre().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(card);
+            }
+        }
+
+        cardList = filteredList;
+        initializeCardList(getActivity());
+
+        if (filteredList.isEmpty()) {
+            Toast.makeText(getActivity(), "No se encontraron cartas que coincidan con la búsqueda", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     /**
      * Iniciador de la lista de cartas.
@@ -97,7 +195,7 @@ public class HomeFragment extends Fragment{
         }else{
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         }
-        cardList = CardsProvide.getCardsList(context);
+
         cardsAdapter = new CardsAdapter(cardList);
         /**
          * Evento cuando se hace click en una carta
@@ -136,5 +234,4 @@ public class HomeFragment extends Fragment{
         });
         recyclerView.setAdapter(cardsAdapter);
     }
-
 }

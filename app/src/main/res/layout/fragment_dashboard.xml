@@ -7,10 +7,13 @@
     android:background="@drawable/cardback"
     tools:context=".ui.dashboard.DashboardFragment">
 
+    <!-- Sección de búsqueda -->
+    <include layout="@layout/layout_search" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <Button
@@ -36,6 +39,17 @@
             android:backgroundTint="#152A98" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvEmptyCollection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:text="No hay cartas en tu colección.\nAgrega cartas desde la sección Cards." />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCards"
